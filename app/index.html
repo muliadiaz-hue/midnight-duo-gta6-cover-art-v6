@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Midnight Duo — GTA 6-style cover maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-star">★</span>
+    <div>
+      <h1>Midnight Duo</h1>
+      <p>GTA 6-style cover maker · Azura Bay</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">↩ Undo</button>
+    <button id="redoBtn" type="button" title="Redo">↪ Redo</button>
+    <button id="exportBtn" type="button" class="primary">⬇ Export PNG</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="stage-col">
+    <div id="stageBox" class="stage-box">
+      <canvas id="stage"></canvas>
+    </div>
+    <p id="panelHint" class="hint">Drag a panel to pan its photo · scroll over a panel to zoom · click a panel to select it</p>
+  </section>
+
+  <aside class="panel-col">
+    <section>
+      <h2>Photos</h2>
+      <div class="thumbs">
+        <button type="button" class="thumb active" data-panel="hero"><img src="samples/duo.jpg" alt="Hero duo photo"><span>Hero</span></button>
+        <button type="button" class="thumb" data-panel="car"><img src="samples/car.jpg" alt="Car photo"><span>Car</span></button>
+        <button type="button" class="thumb" data-panel="heli"><img src="samples/heli.jpg" alt="Helicopter photo"><span>Heli</span></button>
+        <button type="button" class="thumb" data-panel="dj"><img src="samples/dj.jpg" alt="DJ photo"><span>DJ</span></button>
+        <button type="button" class="thumb" data-panel="boat"><img src="samples/boat.jpg" alt="Boat photo"><span>Boat</span></button>
+      </div>
+      <label class="upload" for="uploadInput">Upload your own photo for the selected panel</label>
+      <input id="uploadInput" type="file" accept="image/*" hidden>
+      <p class="note">Photos are read on your machine and never uploaded.</p>
+    </section>
+
+    <section>
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="MIDNIGHT DUO" maxlength="24">
+      </label>
+      <label class="field">City
+        <input id="cityInput" type="text" value="AZURA BAY" maxlength="24">
+      </label>
+      <label class="field">Tagline
+        <input id="taglineInput" type="text" value="TWO LEADS · ONE SCORE" maxlength="40">
+      </label>
+      <label class="field">Sash
+        <input id="sashInput" type="text" value="ONE NIGHT ONLY" maxlength="24">
+      </label>
+      <label class="check"><input id="sashToggle" type="checkbox" checked> Show sash</label>
+    </section>
+
+    <section>
+      <h2>Grade</h2>
+      <select id="gradeSelect">
+        <option value="photo">Photographic — photos untouched</option>
+        <option value="sunset">Sunset — warm Vice City glow</option>
+        <option value="neon">Neon — saturated night magenta</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Export size</h2>
+      <div class="sizes">
+        <button type="button" data-size="wide" class="active">Wide 1920×1080</button>
+        <button type="button" data-size="square">Square 1080×1080</button>
+        <button type="button" data-size="portrait">Portrait 1080×1350</button>
+        <button type="button" data-size="story">Story 1080×1920</button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/editor.js"></script>
+</body>
+</html>
